@@ -5,6 +5,11 @@ restart-cas =
     aws ecs update-service --service cas-"${1}" --task-definition cas-"${1}" --cluster cas-"${1}" --force-new-deployment 
   }; f
 
+restart-service = 
+  !f() { 
+    aws ecs update-service --service "${1}" --task-definition "${1}" --cluster "${1}" --force-new-deployment 
+  }; f
+
 # Delete a stack created by CloudFormation
 delete-stack = 
   !f() {
